@@ -1,0 +1,44 @@
+# WiFly admin (Decap CMS) - GitHub backend
+# Works with Netlify hosting (recommended) and GitHub Pages.
+
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/YOUR-REPO-NAME   # <-- change this
+  branch: main                                 # <-- your default branch
+
+  # Netlify hosting: leave the next line commented out (Netlify provides GitHub login).
+  # GitHub Pages hosting: uncomment and put your OAuth proxy (Cloudflare Worker) URL.
+  # base_url: https://YOUR-OAUTH-PROXY.workers.dev
+
+site_url: https://YOUR-SITE.netlify.app        # <-- your live website URL
+display_url: https://YOUR-SITE.netlify.app
+
+media_folder: "assets/portfolio"   # where uploaded photos are saved in the repo
+public_folder: "assets/portfolio"  # how the website links to them
+
+collections:
+  - name: "portfolio"
+    label: "Portfolio"
+    files:
+      - name: "works"
+        label: "Portfolio Works"
+        file: "data/portfolio.json"
+        format: "json"
+        fields:
+          - label: "Works"
+            name: "items"
+            widget: "list"
+            add_to_top: true
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options:
+                  - { label: "IT Solutions", value: "it" }
+                  - { label: "Graphic Design", value: "design" }
+                  - { label: "Frames & Gifts", value: "gift" }
+                  - { label: "Document Services", value: "docs" }
+                  - { label: "Flight Services", value: "travel" }
+              - { label: "Photo", name: "image", widget: "image", required: false, hint: "Any photo works (phone photos are fine). Landscape looks best; other shapes are cropped on the card. Keep it under about 10MB." }

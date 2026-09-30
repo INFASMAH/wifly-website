@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WiFly provides professional IT solutions, graphic design, personalized gifts, document services and flight booking assistance.">
+  <meta name="theme-color" content="#0b1220">
+  <title>WiFly — One Brand. Endless Services.</title>
+  <link rel="icon" href="assets/wifly-logo.jpg">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    /* Apply saved theme before page paints (prevents white flash) */
+    (function(){try{var t=localStorage.getItem("wifly-theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";if(t==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}})();
+  </script>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <img src="assets/wifly-logo.jpg" alt="">
+    <div class="loader-bar"><span></span></div>
+  </div>
+  <noscript><style>.page-loader{display:none!important}</style></noscript>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="WiFly Home">
+        <img src="assets/wifly-logo.jpg" alt="WiFly logo">
+        <span>WiFly</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary nav-cta" href="#quote">Get a Quote</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch theme">☾</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="#quote">Get a Quote</a>
+    </div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-glow glow-one"></div>
+      <div class="hero-glow glow-two"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Technology • Creativity • Quality</span>
+          <h1>One Brand.<br><span>Endless Services.</span></h1>
+          <p class="hero-services"><span id="typedText">IT Solutions • Design • Gifts • Documents • Flight Services</span><span class="caret" aria-hidden="true"></span></p>
+          <p class="hero-text">Everything you need, from digital solutions to creative services and travel assistance — all in one trusted place.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#services">Explore Services</a>
+            <a class="btn btn-outline" href="#contact">Contact Us</a>
+          </div>
+        </div>
+        <div class="hero-logo-card reveal">
+          <div class="logo-ring"></div>
+          <img src="assets/wifly-logo.jpg" alt="WiFly official logo">
+          <div class="floating-tag tag-a">IT & Creative</div>
+          <div class="floating-tag tag-b">5 Service Areas</div>
+        </div>
+      </div>
+      <div class="container benefits">
+        <div class="benefit"><span>⚡</span><div><strong>Fast & Reliable</strong><small>On-time service</small></div></div>
+        <div class="benefit"><span>✦</span><div><strong>Premium Quality</strong><small>Professional results</small></div></div>
+        <div class="benefit"><span>₹</span><div><strong>Affordable</strong><small>Value for your needs</small></div></div>
+        <div class="benefit"><span>☎</span><div><strong>Customer Support</strong><small>Friendly assistance</small></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow blue">WHAT WE DO</span>
+          <h2>Our Services</h2>
+          <p>Seven powerful service categories, brought together under one brand.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <div class="service-icon blue-bg">⌘</div><span class="service-no">01</span>
+            <h3>IT Solutions</h3>
+            <p>Digital products and business technology.</p>
+            <div class="service-list">
+              <span>Web Development</span><span>Web Design</span><span>Software Development</span><span>Mobile App Development</span><span>UI/UX Design</span><span>E-commerce Development</span>
+            </div>
+            <button class="text-btn service-more" data-service="IT Solutions">Explore IT Services →</button>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon purple-bg">✎</div><span class="service-no">02</span>
+            <h3>Graphic Design</h3>
+            <p>Creative branding and visual communication.</p>
+            <div class="service-list">
+              <span>Logo Design</span><span>Poster Design</span><span>Business Card Design</span><span>Social Media Design</span><span>Banner Design</span><span>Flyer Design</span><span>Brochure Design</span><span>Invitation Card Design</span><span>Brand Identity Design</span><span>Photo Manipulation</span>
+            </div>
+            <button class="text-btn service-more" data-service="Graphic Design">Explore Design →</button>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon pink-bg">▣</div><span class="service-no">03</span>
+            <h3>Frames & Gifts</h3>
+            <p>Personalized gifts made for special moments.</p>
+            <div class="service-list">
+              <span>Custom / Couple / Family Frames</span><span>Collage / Wall / Wooden / Acrylic Frames</span><span>Customized Mugs & Keychains</span><span>Photo Cushions & Albums</span><span>Personalized T-Shirts & Bottles</span><span>Gift Boxes & Customized Clocks</span><span>LED Photo Frames</span><span>Birthday • Wedding • Anniversary Gifts</span><span>Graduation • Baby Shower • Corporate Gifts</span>
+            </div>
+            <button class="text-btn service-more" data-service="Frames & Personalized Gifts">Personalize Your Gift →</button>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon cyan-bg">▤</div><span class="service-no">04</span>
+            <h3>Educational & Documents</h3>
+            <p>Everyday document and student support services.</p>
+            <div class="service-list">
+              <span>Assignment Typing</span><span>CV / Resume Design</span><span>Document Formatting</span><span>Scanning</span><span>Photocopying</span><span>Online Application Support</span>
+            </div>
+            <button class="text-btn service-more" data-service="Educational & Document Services">View Services →</button>
+          </article>
+
+          <article class="service-card featured-service reveal">
+            <div class="service-icon navy-bg">✈</div><span class="service-no">05</span>
+            <h3>Travel & Tourism</h3>
+            <p>Flight booking and travel assistance.</p>
+            <div class="service-list">
+              <span>Flight Ticket Booking</span><span>Domestic & International Flights</span><span>Flight Search & Fare Comparison</span><span>E-Ticket & Confirmation</span><span>Seat Selection Assistance</span><span>Baggage Assistance</span><span>Rescheduling & Cancellation Assistance</span><span>Special Meal / Special Assistance</span><span>Flight Schedule Information</span><span>Travel Document Guidance</span><span>Airport Transfer Coordination</span>
+            </div>
+            <button class="text-btn service-more" data-service="Travel & Tourism — Flight Services">Book a Flight →</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-strip" id="about">
+      <div class="container">
+        <div class="section-head light reveal">
+          <span class="eyebrow">WHY WIFLY?</span>
+          <h2>One place for more of what you need.</h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-item reveal"><b>01</b><h3>All-in-One</h3><p>Multiple professional services under one trusted brand.</p></div>
+          <div class="why-item reveal"><b>02</b><h3>Professional Quality</h3><p>Clean, creative and reliable results.</p></div>
+          <div class="why-item reveal"><b>03</b><h3>Affordable Pricing</h3><p>Flexible options for different needs and budgets.</p></div>
+          <div class="why-item reveal"><b>04</b><h3>Fast & Reliable</h3><p>We respect your time and deadlines.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow blue">OUR WORK</span>
+          <h2>Portfolio</h2>
+          <p>A glimpse of what WiFly can create.</p>
+        </div>
+        <div class="filters" role="tablist">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="it">IT</button>
+          <button class="filter" data-filter="design">Design</button>
+          <button class="filter" data-filter="gift">Gifts</button>
+        </div>
+        <div class="portfolio-grid">
+          <div class="work-card" data-category="it"><div class="work-art art-it">WEB</div><h3>Business Website</h3><span>IT Solutions</span></div>
+          <div class="work-card" data-category="design"><div class="work-art art-design">BRAND</div><h3>Brand Identity</h3><span>Graphic Design</span></div>
+          <div class="work-card" data-category="gift"><div class="work-art art-gift">GIFT</div><h3>Custom Gift</h3><span>Frames & Gifts</span></div>
+          <div class="work-card" data-category="design"><div class="work-art art-social">SOCIAL</div><h3>Social Media Design</h3><span>Graphic Design</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="packages">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow blue">POPULAR PACKAGES</span>
+          <h2>Simple packages to get started</h2>
+          <p>These are sample packages and can be changed anytime.</p>
+        </div>
+        <div class="package-grid">
+          <article class="package reveal"><span>Starter Business</span><h3>LKR 7,990</h3><ul><li>Logo Design</li><li>Business Card</li><li>Social Media Design</li><li>1 Revision</li></ul><a href="#quote" class="btn btn-primary">Choose Plan</a></article>
+          <article class="package reveal popular"><em>Popular</em><span>Website Basic</span><h3>LKR 24,990</h3><ul><li>5 Page Website</li><li>Responsive Design</li><li>Contact Form</li><li>Basic SEO</li></ul><a href="#quote" class="btn btn-primary">Choose Plan</a></article>
+          <article class="package reveal"><span>Gift Combo</span><h3>LKR 5,990</h3><ul><li>Photo Mug</li><li>Keychain</li><li>Photo Frame</li><li>Gift Packaging</li></ul><a href="#quote" class="btn btn-primary">Choose Plan</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow blue">CLIENT FEEDBACK</span><h2>What Our Clients Say</h2></div>
+        <div class="testimonial-grid">
+          <article class="testimonial reveal"><div class="stars">★★★★★</div><p>“Excellent service! The team was professional, friendly and delivered beyond expectations.”</p><strong>Rashmi Fernando</strong><span>Business Owner</span></article>
+          <article class="testimonial reveal"><div class="stars">★★★★★</div><p>“Great experience with WiFly. The creative work and communication were excellent.”</p><strong>Kavindu & Nethmi</strong><span>Wedding Couple</span></article>
+          <article class="testimonial reveal"><div class="stars">★★★★★</div><p>“Fast delivery and impressive quality. Highly recommended for business services.”</p><strong>Tharindu Perera</strong><span>Entrepreneur</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="quote">
+      <div class="container cta-inner reveal">
+        <div><span class="eyebrow">LET'S CREATE</span><h2>Ready to start your project?</h2><p>Tell us what you need and we'll help you choose the right service.</p></div>
+        <a class="btn btn-white" href="#contact">Get a Quote Now</a>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <span class="eyebrow blue">CONTACT WIFLY</span>
+          <h2>Let's work together.</h2>
+          <p>Have a project, order or travel request? Send us a message.</p>
+          <div class="contact-links">
+            <a href="tel:+94000000000"><span>☎</span><div><b>Call Us</b><small>+94 XX XXX XXXX</small></div></a>
+            <a href="https://wa.me/94000000000" target="_blank" rel="noopener"><span>◉</span><div><b>WhatsApp</b><small>Chat with us</small></div></a>
+            <a href="mailto:info@wifly.lk"><span>✉</span><div><b>Email</b><small>info@wifly.lk</small></div></a>
+            <a href="#"><span>⌖</span><div><b>Location</b><small>Sri Lanka</small></div></a>
+          </div>
+        </div>
+        <form class="quote-form reveal" id="quoteForm">
+          <label>Full Name<input required name="name" type="text" placeholder="Your name"></label>
+          <label>Phone Number<input required name="phone" type="tel" placeholder="+94"></label>
+          <label>Email<input name="email" type="email" placeholder="you@example.com"></label>
+          <label>Select Service<select required name="service">
+            <option value="">Choose a service</option>
+            <option>IT Solutions</option><option>Graphic Design</option><option>Frames & Personalized Gifts</option><option>Educational & Document Services</option><option>Travel & Tourism — Flight Services</option>
+          </select></label>
+          <label>Message<textarea required name="message" rows="4" placeholder="Tell us what you need..."></textarea></label>
+          <button class="btn btn-primary full" type="submit">Send via WhatsApp</button>
+          <p class="form-note" id="formNote">Your details will open in WhatsApp so you can send them to us directly.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><a class="brand footer-brand" href="#home"><img src="assets/wifly-logo.jpg" alt="WiFly logo"><span>WiFly</span></a><p>Professional IT, creative, gifts, document and flight services — all in one place.</p></div>
+      <div><h4>Quick Links</h4><a href="#home">Home</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#about">About Us</a><a href="#contact">Contact</a></div>
+      <div><h4>Services</h4><a href="#services">IT Solutions</a><a href="#services">Graphic Design</a><a href="#services">Frames & Gifts</a><a href="#services">Travel & Tourism</a></div>
+      <div><h4>Contact</h4><a href="tel:+94000000000">+94 XX XXX XXXX</a><a href="mailto:info@wifly.lk">info@wifly.lk</a><span>Sri Lanka</span></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 WiFly. All Rights Reserved.</span><span>Built for mobile-first experiences.</span></div>
+  </footer>
+
+  <div class="mobile-bar">
+    <a href="tel:+94000000000"><span>☎</span>Call</a>
+    <a href="https://wa.me/94000000000" target="_blank" rel="noopener"><span>◉</span>WhatsApp</a>
+    <a href="#quote"><span>▣</span>Get Quote</a>
+  </div>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+  <div class="toast" id="toast"></div>
+
+  <a class="wa-float" id="waFloat" href="https://wa.me/94000000000" data-text="Hi WiFly! I'd like to know more about your services." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <span class="wa-tip">Chat with us</span>
+    <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Portfolio preview" hidden>
+    <button class="lb-close" id="lbClose" type="button" aria-label="Close preview">✕</button>
+    <button class="lb-nav lb-prev" id="lbPrev" type="button" aria-label="Previous work">‹</button>
+    <figure class="lb-fig">
+      <div class="lb-media" id="lbMedia"></div>
+      <figcaption>
+        <div><strong id="lbTitle"></strong><small id="lbCat"></small></div>
+        <a class="btn btn-primary" id="lbCta" href="#contact">Get something like this</a>
+      </figcaption>
+    </figure>
+    <button class="lb-nav lb-next" id="lbNext" type="button" aria-label="Next work">›</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
