@@ -3,7 +3,7 @@
 
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/YOUR-REPO-NAME   # <-- change this
+     repo: unga-username/wifly-website   # <-- change this
   branch: main                                 # <-- your default branch
 
   # Netlify hosting: leave the next line commented out (Netlify provides GitHub login).
