@@ -1,13 +1,44 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
-  <title>WiFly Admin</title>
-</head>
-<body>
-  <!-- Decap CMS: reads /admin/config.yml -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>WiFly Admin</title>
+<style>
+*{box-sizing:border-box}body{font-family:system-ui,sans-serif;margin:0;background:#f3f6fb;color:#12203a}
+.wrap{max-width:860px;margin:0 auto;padding:16px}.card{background:#fff;border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 1px 4px #0001}
+input,select{font:inherit;padding:10px;border-radius:8px;border:1px solid #c5cfe0;width:100%;margin:6px 0}
+button{font:inherit;background:#1d6fe8;color:#fff;border:0;border-radius:8px;cursor:pointer;padding:10px 18px}
+button.del{background:#d93025;padding:6px 12px}.tabs{display:flex;gap:8px;margin-bottom:16px}.tabs button{background:#dbe6fa;color:#1d6fe8}.tabs button.on{background:#1d6fe8;color:#fff}
+.row{display:flex;gap:12px;align-items:center;border-top:1px solid #e5ebf5;padding:10px 0}.row img{width:64px;height:48px;object-fit:cover;border-radius:6px;background:#dde}.row div{flex:1;min-width:0;overflow-wrap:anywhere}
+small{color:#667}.err{color:#d93025}
+</style></head><body><div class="wrap"><h2>WiFly Admin</h2>
+<div class="card" id="loginBox"><input id="pw" type="password" placeholder="Admin password"><button onclick="login()">Login</button> <span class="err" id="loginMsg"></span></div>
+<div id="app" hidden>
+ <div class="tabs"><button id="t1" class="on" onclick="tab(1)">Portfolio</button><button id="t2" onclick="tab(2)">Inquiries</button></div>
+ <div id="p1"><div class="card"><h3>Add work</h3>
+  <input id="title" placeholder="Title"><select id="cat"></select><input id="photo" type="file" accept="image/*">
+  <button onclick="add()">Upload &amp; Publish</button> <small id="msg"></small></div>
+  <div class="card" id="works"></div></div>
+ <div id="p2" hidden><div class="card" id="inqs"></div></div>
+</div></div>
+<script>
+const CLOUD="nlvkmnpl",PRESET="wifly_upload"; // <-- Cloudinary values
+const CATS={it:"IT Solutions",design:"Graphic Design",gift:"Frames & Gifts",docs:"Document Services",travel:"Flight Services"};
+const $=id=>document.getElementById(id);let pw=sessionStorage.getItem("pw")||"";
+const msg=t=>$("msg").textContent=t;
+for(const k in CATS)$("cat").add(new Option(CATS[k],k));
+async function api(u,o={}){const r=await fetch(u,{...o,headers:{"Content-Type":"application/json","x-admin-password":pw}});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"Error");return d}
+function el(t,x,c){const e=document.createElement(t);if(x!=null)e.textContent=x;if(c)e.className=c;return e}
+async function login(){if($("pw").value)pw=$("pw").value;try{await api("/api/inquiry");sessionStorage.setItem("pw",pw);$("loginBox").hidden=true;$("app").hidden=false;load()}catch(e){$("loginMsg").textContent=pw?"Wrong password":""}}
+function tab(n){$("p1").hidden=n!=1;$("p2").hidden=n!=2;$("t1").className=n==1?"on":"";$("t2").className=n==2?"on":"";load()}
+async function add(){const title=$("title").value.trim(),f=$("photo").files[0];if(!title)return msg("Enter a title");
+ try{let image="";if(f){msg("Uploading photo…");const fd=new FormData();fd.append("file",f);fd.append("upload_preset",PRESET);
+  const d=await(await fetch("https://api.cloudinary.com/v1_1/"+CLOUD+"/image/upload",{method:"POST",body:fd})).json();
+  if(!d.secure_url)throw new Error("Photo upload failed - check Cloudinary settings");image=d.secure_url.replace("/upload/","/upload/w_1600,q_auto,f_auto/")}
+  await api("/api/portfolio",{method:"POST",body:JSON.stringify({title,category:$("cat").value,image})});
+  $("title").value="";$("photo").value="";msg("Published ✔");load()}catch(e){msg(e.message)}}
+async function del(u,id){if(confirm("Delete?")){await api(u+"?id="+id,{method:"DELETE"});load()}}
+async function load(){
+ const w=await(await fetch("/api/portfolio")).json();$("works").replaceChildren(...(w.items||[]).map(i=>{const r=el("div",null,"row"),im=el("img");if(i.image)im.src=i.image;
+  const d=el("div");d.append(el("b",i.title),el("br"),el("small",CATS[i.category]||i.category));const b=el("button","Delete","del");b.onclick=()=>del("/api/portfolio",i.id);r.append(im,d,b);return r}));
+ const q=await api("/api/inquiry");$("inqs").replaceChildren(...q.items.map(i=>{const r=el("div",null,"row"),d=el("div");
+  d.append(el("b",i.name+" - "+i.phone),el("br"),el("small",(i.service||"")+" | "+new Date(i.createdAt).toLocaleString()+(i.email?" | "+i.email:"")),el("br"),el("span",i.message));
+  const b=el("button","Delete","del");b.onclick=()=>del("/api/inquiry",i._id);r.append(d,b);return r}))}
+if(pw)login();
+</script></body></html>

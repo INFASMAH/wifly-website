@@ -17,6 +17,7 @@ document.getElementById("quoteForm")?.addEventListener("submit",e=>{
   const lines=["*New Inquiry - WiFly Website*","","*Name:* "+v("name"),"*Phone:* "+v("phone")];
   if(v("email"))lines.push("*Email:* "+v("email"));
   lines.push("*Service:* "+v("service"),"","*Message:*",v("message"));
+  fetch("/api/inquiry",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(f))}).catch(()=>{});
   const url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(lines.join("\n"));
   const w=window.open(url,"_blank","noopener");
   if(!w)window.location.href=url;
@@ -122,6 +123,7 @@ document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>{
   const canCDN=location.protocol.startsWith("http")&&!/github\.io$/.test(location.hostname)&&!/^(localhost|127\.|192\.168\.)/.test(location.hostname);
   function candidates(src,w){
     const list=[];
+    if(/^https?:/.test(src))return[src];
     if(canCDN)list.push("/.netlify/images?url="+encodeURIComponent("/"+src.replace(/^\/+/,""))+"&w="+w);
     list.push(src);return list;
   }
@@ -201,7 +203,7 @@ document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>{
     travel:{filter:"Travel",label:"Flight Services",art:"art-travel",ph:"FLY"}
   };
   try{
-    const res=await fetch("data/portfolio.json",{cache:"no-cache"});
+    const res=await fetch("/api/portfolio",{cache:"no-cache"});
     if(!res.ok)throw new Error("no data");
     const items=((await res.json()).items||[]).filter(i=>i&&i.title&&CATS[i.category]);
     if(!items.length)return;
